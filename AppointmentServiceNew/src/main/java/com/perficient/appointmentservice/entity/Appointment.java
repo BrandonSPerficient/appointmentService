@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 import jakarta.validation.constraints.Future;
 
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -28,9 +27,9 @@ public class Appointment {
     @NotBlank
     private String aptName;
     private String description;
-    @Future(message = "Start time has to be in the future.")
+    //@Future(message = "Start time has to be in the future.")
     private LocalDateTime startTime;
-    @Future(message = "End Timme  has to be in the future:")
+    //@Future(message = "End Timme  has to be in the future:")
     private LocalDateTime endTime;
     private String metaData;
 
