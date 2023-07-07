@@ -22,9 +22,9 @@ public class Appointment {
     private String aptType;
     @NotBlank
     private String aptName;
-    private String description;
-    private String startTime;
-    private String endTime;
-    private String metaData;
+//    private String description;
+//    private String startTime;
+//    private String endTime;
+//    private String metaData;
 
 }
