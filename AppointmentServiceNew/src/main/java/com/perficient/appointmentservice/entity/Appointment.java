@@ -17,14 +17,14 @@ public class Appointment {
 
     @Id
     @GeneratedValue
-    private int aptId;
+    private Integer aptId;
     @NotBlank
     private String aptType;
     @NotBlank
     private String aptName;
-//    private String description;
-//    private String startTime;
-//    private String endTime;
-//    private String metaData;
+    private String description;
+    private String startTime;
+    private String endTime;
+    private String metaData;
 
 }
