@@ -2,6 +2,7 @@ package com.perficient.appointmentservice.service;
 
 
 import com.perficient.appointmentservice.entity.Appointment;
+import com.perficient.appointmentservice.exception.AppointmentNotFoundException;
 import com.perficient.appointmentservice.repository.AppointmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,7 @@ public class UpdateAppointmentService {
         public Appointment updateAppointment(int aptId, Appointment appointment)
         {
             Optional<Appointment> currentAppointment = appointmentRepository.findById(aptId);
+            if (currentAppointment.isEmpty()) throw new AppointmentNotFoundException("The Appointment doesn't exist");
             update(appointment, currentAppointment.get());
             appointmentRepository.save(currentAppointment.get());
             return new Appointment();
