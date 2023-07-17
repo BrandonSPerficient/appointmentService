@@ -1,10 +1,11 @@
 package com.perficient.appointmentservice.controller;
 
 import com.perficient.appointmentservice.entity.Appointment;
-import com.perficient.appointmentservice.repository.AppointmentRepository;
 import com.perficient.appointmentservice.service.ListSingleAppointmentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -15,10 +16,10 @@ public class ListSingleAppointmentController {
 
 
     @GetMapping("/appointments/{aptId}")
-    @ResponseBody
-    public Appointment retrieveAppointment(@PathVariable int aptId)
+    public Optional<Appointment> retrieveAppointment(@PathVariable int aptId)
     {
-        return singleAppointmentServiceImpl.findById(aptId);
+      Optional<Appointment> appointment  = singleAppointmentServiceImpl.findById(aptId);
+      return appointment;
     }
 
 

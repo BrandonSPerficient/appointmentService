@@ -5,6 +5,8 @@ import com.perficient.appointmentservice.repository.AppointmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class ListSingleAppointmentServiceImpl {
 
@@ -13,9 +15,10 @@ public class ListSingleAppointmentServiceImpl {
     private AppointmentRepository appointmentRepository;
 
 
-    public Appointment findById(int aptId) {
+    public Optional<Appointment> findById(Integer aptId) {
 
-        Appointment appointment = appointmentRepository.getById(aptId);
+        Optional<Appointment> appointment = appointmentRepository.findById(aptId);
         return appointment;
     }
+
 }
