@@ -18,7 +18,6 @@ public class Appointment {
     @Id
     @GeneratedValue
     private Integer aptId;
-    private Integer userId;
     @NotBlank
     private String aptType;
     @NotBlank
