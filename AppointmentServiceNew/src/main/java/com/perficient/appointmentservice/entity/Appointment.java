@@ -18,6 +18,7 @@ public class Appointment {
     @Id
     @GeneratedValue
     private Integer aptId;
+    private Integer userId;
     @NotBlank
     private String aptType;
     @NotBlank
@@ -26,5 +27,4 @@ public class Appointment {
     private String startTime;
     private String endTime;
     private String metaData;
-
 }
