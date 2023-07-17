@@ -18,7 +18,4 @@ public class AppointmentListServiceImpl {
     public List<Appointment> retrieveAllAppointment() {
         return appointmentRepository.findAll();
     }
-
-
-
 }
