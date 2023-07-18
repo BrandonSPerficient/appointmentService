@@ -19,8 +19,10 @@ public class ListSingleAppointmentServiceImpl {
     public Optional<Appointment> findById(Integer aptId) {
 
         Optional<Appointment> appointment = appointmentRepository.findById(aptId);
-        if(appointment.isEmpty()) throw new AppointmentNotFoundException("The Appointment doesn't exist");
-        return appointment;
+        if(appointment.isEmpty()) {
+            throw new AppointmentNotFoundException("The Appointment doesn't exist");
+        }
+            return appointment;
     }
 
 }
