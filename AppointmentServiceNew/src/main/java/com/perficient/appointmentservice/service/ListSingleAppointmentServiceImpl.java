@@ -22,6 +22,8 @@ public class ListSingleAppointmentServiceImpl {
         if(appointment.isEmpty()) {
             throw new AppointmentNotFoundException("The Appointment doesn't exist");
         }
+
+
             return appointment;
     }
 

@@ -14,9 +14,6 @@ public class CreateAppointmentServiceImpl {
     private static int nextAptId = 1;
 
     public Appointment save(Appointment appointment) {
-        if (appointment.getAptId() == null) {
-            appointment.setAptId(nextAptId++);
-        }
         appointmentRepository.save(appointment);
         return appointment;
     }

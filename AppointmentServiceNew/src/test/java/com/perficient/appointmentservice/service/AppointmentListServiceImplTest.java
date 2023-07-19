@@ -23,6 +23,7 @@ public class AppointmentListServiceImplTest {
     @Mock
     private AppointmentRepository appointmentRepository;
 
+
     @Test
     void retrieveAllAppointment_ReturnsAllAppointments() {
         List<Appointment> appointmentList = new ArrayList<>();
