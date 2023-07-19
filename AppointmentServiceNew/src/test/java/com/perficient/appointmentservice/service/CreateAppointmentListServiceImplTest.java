@@ -24,14 +24,6 @@ public class CreateAppointmentListServiceImplTest {
     void createAppointmentTest()
     {
         Appointment appointment = new Appointment();
-        appointment.setAptId(1);
-        appointment.setAptType("Checkup");
-        appointment.setAptName("Dentist");
-        appointment.setDescription("This is a bi-annually checkup visit");
-        appointment.setStartTime("12:00");
-        appointment.setEndTime("1:00");
-        appointment.setMetaData("asds");
-
 
         when(appointmentRepository.save(appointment)).thenReturn(appointment);
 

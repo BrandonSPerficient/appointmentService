@@ -26,17 +26,13 @@ public class DeleteAppointmentServiceImplTest {
     @Test
     void deleteAppointmentTest()
     {
-        //setup any data
+
         Appointment appointment = new Appointment();
 
-        //configure mock methods
         when(appointmentRepository.findById(appointment.getAptId())).thenReturn(Optional.of(appointment));
-
-        //run method under test
 
         deleteAppointmentService.deleteAppointmentById(appointment.getAptId());
 
-        //assertions and verify
         verify(appointmentRepository).delete(appointment);
 
 
