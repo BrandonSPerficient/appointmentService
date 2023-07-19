@@ -1,6 +1,5 @@
 package com.perficient.appointmentservice.service;
 
-
 import com.perficient.appointmentservice.entity.Appointment;
 import com.perficient.appointmentservice.repository.AppointmentRepository;
 import org.junit.jupiter.api.Test;
@@ -12,7 +11,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.mockito.Mockito.verify;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -25,20 +24,17 @@ public class AppointmentListServiceImplTest {
     private AppointmentRepository appointmentRepository;
 
     @Test
-    void retrieveAllAppointmentTest(){
+    void retrieveAllAppointment_ReturnsAllAppointments() {
+        List<Appointment> appointmentList = new ArrayList<>();
+        appointmentList.add(new Appointment(1, 1, "Checkup", "Dentist", "Bi-annual checkup", "12", "1", "metadata1"));
+        appointmentList.add(new Appointment(2, 1, "Cleaning", "Dentist", "Regular cleaning", "10", "11", "metadata2"));
 
-        List<Appointment> appointments = new ArrayList<Appointment>();
+        when(appointmentRepository.findAll()).thenReturn(appointmentList);
 
-        //setup any data
+        List<Appointment> result = appointmentListService.retrieveAllAppointment();
 
-        //configure mock methods
-        when(appointmentRepository.findAll()).thenReturn(appointments);
-
-        //run methods under test
-        appointmentListService.retrieveAllAppointment();
-
-        //assertions and verify
-        verify(appointmentRepository).findAll();
+        assertEquals(appointmentList.size(), result.size());
+        assertEquals(appointmentList.get(0).getAptName(), result.get(0).getAptName());
+        assertEquals(appointmentList.get(1).getAptName(), result.get(1).getAptName());
     }
-
 }

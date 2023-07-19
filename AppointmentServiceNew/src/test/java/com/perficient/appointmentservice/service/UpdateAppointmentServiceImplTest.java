@@ -26,13 +26,26 @@ public class UpdateAppointmentServiceImplTest {
     @Test
     void updateAppointment_ValidId_ReturnsUpdatedAppointment() {
         int aptId = 1;
+        int userId = 1;
         Appointment existingAppointment = new Appointment();
         existingAppointment.setAptId(aptId);
+        existingAppointment.setUserId(1);
         existingAppointment.setAptName("Checkup");
+        existingAppointment.setAptType("Dentist");
+        existingAppointment.setDescription("This is a bi-annually checkup visit");
+        existingAppointment.setStartTime("12:00");
+        existingAppointment.setEndTime("1:00");
+        existingAppointment.setMetaData("asds");
 
         Appointment updatedAppointment = new Appointment();
         updatedAppointment.setAptId(aptId);
+        updatedAppointment.setUserId(1);
         updatedAppointment.setAptName("New Checkup");
+        updatedAppointment.setAptType("Dermatology");
+        updatedAppointment.setDescription("This is a bi-annually checkup visit");
+        updatedAppointment.setStartTime("10:00");
+        updatedAppointment.setEndTime("11:00");
+        updatedAppointment.setMetaData("asds");
 
         when(appointmentRepository.findById(aptId)).thenReturn(Optional.of(existingAppointment));
         when(appointmentRepository.save(existingAppointment)).thenReturn(existingAppointment);

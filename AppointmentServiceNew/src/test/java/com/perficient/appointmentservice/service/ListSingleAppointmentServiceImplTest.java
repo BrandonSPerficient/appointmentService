@@ -29,7 +29,6 @@ public class ListSingleAppointmentServiceImplTest {
 
         Appointment appointment = new Appointment(1,1,"Checkup","Dentist", "This is a bi-annually checkup visit", "12", "1", "adas" );
 
-
         when(appointmentRepository.findById(anyInt())).thenReturn(Optional.of(appointment));
 
         listSingleAppointmentService.findById(1);
