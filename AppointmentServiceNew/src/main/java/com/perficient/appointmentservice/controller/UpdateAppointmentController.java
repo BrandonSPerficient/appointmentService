@@ -19,7 +19,8 @@ public class UpdateAppointmentController {
     public ResponseEntity<Appointment> updateAppointment(
             @PathVariable int aptId,
             @Valid @RequestBody Appointment appointment
-    ) {
+    )
+    {
         Appointment updatedAppointment = appointmentService.updateAppointment(aptId, appointment);
         return ResponseEntity.ok(updatedAppointment);
     }

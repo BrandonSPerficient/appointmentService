@@ -8,11 +8,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class CreateAppointmentListServiceImplTest {
+public class CreateAppointmentServiceImplTest {
 
     @InjectMocks
     private CreateAppointmentServiceImpl appointmentServiceImpl;
@@ -21,18 +21,17 @@ public class CreateAppointmentListServiceImplTest {
     private AppointmentRepository appointmentRepository;
 
     @Test
-    void createAppointmentTest()
-    {
+    public void save_ValidAppointment_ReturnsSavedAppointmentWithIncrementedId() {
+
         Appointment appointment = new Appointment();
+        appointment.setAptId(0);
 
         when(appointmentRepository.save(appointment)).thenReturn(appointment);
 
-        appointmentServiceImpl.save(appointment);
+
+        Appointment savedAppointment = appointmentServiceImpl.save(appointment);
 
         verify(appointmentRepository).save(appointment);
-
+        assertEquals(0, savedAppointment.getAptId());
     }
-
-
-
 }
