@@ -8,31 +8,28 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class CreateAppointmentListServiceImplTest {
-
-    @InjectMocks
-    private CreateAppointmentServiceImpl appointmentServiceImpl;
+public class CreateAppointmentServiceImplTest {
 
     @Mock
     private AppointmentRepository appointmentRepository;
 
+    @InjectMocks
+    private CreateAppointmentServiceImpl createAppointmentService;
+
     @Test
-    void createAppointmentTest()
-    {
+    void save_ValidAppointment_ReturnsSavedAppointment() {
+
         Appointment appointment = new Appointment();
 
         when(appointmentRepository.save(appointment)).thenReturn(appointment);
 
-        appointmentServiceImpl.save(appointment);
+        Appointment savedAppointment = createAppointmentService.save(appointment);
 
         verify(appointmentRepository).save(appointment);
-
+        assertEquals(appointment, savedAppointment);
     }
-
-
-
 }

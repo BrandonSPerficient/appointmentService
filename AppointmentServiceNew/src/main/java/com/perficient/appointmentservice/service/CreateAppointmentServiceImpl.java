@@ -12,6 +12,7 @@ public class CreateAppointmentServiceImpl {
     private AppointmentRepository appointmentRepository;
 
     public Appointment save(Appointment appointment) {
+
         appointmentRepository.save(appointment);
         return appointment;
     }
