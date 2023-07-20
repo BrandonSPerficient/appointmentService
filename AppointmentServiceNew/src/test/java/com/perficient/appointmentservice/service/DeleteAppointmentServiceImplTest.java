@@ -24,8 +24,7 @@ public class DeleteAppointmentServiceImplTest {
     private AppointmentRepository appointmentRepository;
 
     @Test
-    void deleteAppointmentTest()
-    {
+    void deleteAppointmentTest() {
 
         Appointment appointment = new Appointment();
 

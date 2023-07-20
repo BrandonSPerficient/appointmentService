@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ListAllAppointmentsOfUserByIdServiceImpl {
@@ -16,10 +15,10 @@ public class ListAllAppointmentsOfUserByIdServiceImpl {
     @Autowired
     private AppointmentRepository appointmentRepository;
 
-    public Optional<List<Appointment>> findByUserId(Integer userId) {
+    public List<Appointment> findByUserId(Integer userId) {
 
-        Optional<List<Appointment>> appointment = appointmentRepository.findByUserId(userId);
-        if(appointment.isEmpty()) {
+        List<Appointment> appointment = appointmentRepository.findByUserId(userId);
+        if (appointment.isEmpty()) {
             throw new AppointmentNotFoundException("The Appointment doesn't exist");
         }
         return appointment;

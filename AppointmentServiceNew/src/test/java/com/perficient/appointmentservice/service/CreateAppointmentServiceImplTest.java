@@ -14,24 +14,22 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 public class CreateAppointmentServiceImplTest {
 
-    @InjectMocks
-    private CreateAppointmentServiceImpl appointmentServiceImpl;
-
     @Mock
     private AppointmentRepository appointmentRepository;
 
+    @InjectMocks
+    private CreateAppointmentServiceImpl createAppointmentService;
+
     @Test
-    public void save_ValidAppointment_ReturnsSavedAppointmentWithIncrementedId() {
+    void save_ValidAppointment_ReturnsSavedAppointment() {
 
         Appointment appointment = new Appointment();
-        appointment.setAptId(0);
 
         when(appointmentRepository.save(appointment)).thenReturn(appointment);
 
-
-        Appointment savedAppointment = appointmentServiceImpl.save(appointment);
+        Appointment savedAppointment = createAppointmentService.save(appointment);
 
         verify(appointmentRepository).save(appointment);
-        assertEquals(0, savedAppointment.getAptId());
+        assertEquals(appointment, savedAppointment);
     }
 }

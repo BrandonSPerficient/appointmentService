@@ -11,9 +11,8 @@ public class CreateAppointmentServiceImpl {
     @Autowired
     private AppointmentRepository appointmentRepository;
 
-    private static int nextAptId = 1;
-
     public Appointment save(Appointment appointment) {
+
         appointmentRepository.save(appointment);
         return appointment;
     }
