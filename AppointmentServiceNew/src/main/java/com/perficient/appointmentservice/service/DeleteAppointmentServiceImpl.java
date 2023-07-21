@@ -14,8 +14,6 @@ public class DeleteAppointmentServiceImpl {
     private AppointmentRepository appointmentRepository;
 
     public void deleteAppointmentById(Integer aptId) {
-        Appointment appointment = appointmentRepository.findById(aptId)
-                .orElseThrow(() -> new AppointmentNotFoundException("The Appointment doesn't exist"));
-        appointmentRepository.delete(appointment);
+        appointmentRepository.deleteById(aptId);
     }
 }
