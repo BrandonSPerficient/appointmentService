@@ -13,7 +13,6 @@ public class ListSingleAppointmentServiceImpl {
     private AppointmentRepository appointmentRepository;
 
     public Appointment findById(Integer aptId) {
-        return appointmentRepository.findById(aptId)
-                .orElseThrow(() -> new AppointmentNotFoundException("The Appointment doesn't exist"));
+        return appointmentRepository.findById(aptId).orElse(null);
     }
 }
